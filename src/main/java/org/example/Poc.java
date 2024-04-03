@@ -3,6 +3,7 @@ package org.example;
 import com.microsoft.playwright.*;
 import com.microsoft.playwright.options.AriaRole;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -26,6 +27,7 @@ public class Poc {
                 page.navigate("https://www.saucedemo.com/");
 
                 List<String> users;
+                List<Locator> locators = new ArrayList<>();
                 Locator credentialLocator = page.locator("#login_credentials");
                 Locator passwordLocator = page.locator(".login_password");
                 users = Arrays.stream(credentialLocator.allInnerTexts().get(0).split("\n")).filter(word -> word.contains("_user")).toList();
